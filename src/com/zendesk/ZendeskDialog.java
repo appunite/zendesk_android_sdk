@@ -79,7 +79,7 @@ public class ZendeskDialog {
 		ZendeskDialog.url = url;
 		return new ZendeskDialog(ZendeskDialog.context);
 	}
-	
+
 	public ZendeskDialog setTag(String tag) {
 		ZendeskDialog.tag = tag;
 		return new ZendeskDialog(ZendeskDialog.context);
@@ -108,7 +108,7 @@ public class ZendeskDialog {
 				ZendeskDialog.tag = TAG_DEFAULT;
 			}
 		}
-		
+
 		// set Dialog url
 		if (ZendeskDialog.url == null)
 			ZendeskDialog.url = getMetaDataByKey("zendesk_url");
@@ -152,13 +152,13 @@ public class ZendeskDialog {
 				String reqEmail = "email=" + URLEncoder.encode(email, "UTF-8");
 				String reqSubject = "subject=" + URLEncoder.encode(subject, "UTF-8");
 				String reqTag = "set_tags=" + URLEncoder.encode(ZendeskDialog.tag, "UTF-8");
-				
+
 				String reqContent = reqDesc + "&" + reqEmail + "&" + reqSubject + "&" + reqTag;
-				String requestUrl = "http://" + server + dir;
+				String requestUrl = "https://" + server + dir;
 
 				URL url = new URL(requestUrl);
 				Log.d(TAG, "Sending Request " + url.toExternalForm());
-				
+
 				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 				connection.setRequestMethod("POST");
 				connection.setRequestProperty ("Content-Type","application/x-www-form-urlencoded");
@@ -182,10 +182,10 @@ public class ZendeskDialog {
 					Log.d(TAG, line);
 				}
 				bufferReader.close();
-	
+
     aDialog.dismiss();
 				resetDialogView();
-			
+
 				message.getData().putString("submit", "successfully");
 				toastHandler.sendMessage(message);
 
@@ -220,7 +220,7 @@ public class ZendeskDialog {
 		descriptionET.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 		descriptionET.setMinLines(2);
 		descriptionET.setMaxLines(2);
-		descriptionET.setInputType(InputType.TYPE_CLASS_TEXT 
+		descriptionET.setInputType(InputType.TYPE_CLASS_TEXT
 				| InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
 				| InputType.TYPE_TEXT_FLAG_AUTO_CORRECT );
 
@@ -229,7 +229,7 @@ public class ZendeskDialog {
 		subjectTV.setTextColor(Color.WHITE);
 		subjectET = new EditText(context);
 		subjectET.setSingleLine(true);
-		subjectET.setInputType(InputType.TYPE_CLASS_TEXT 
+		subjectET.setInputType(InputType.TYPE_CLASS_TEXT
 				| InputType.TYPE_TEXT_FLAG_CAP_WORDS
 				| InputType.TYPE_TEXT_FLAG_AUTO_CORRECT );
 
@@ -238,7 +238,7 @@ public class ZendeskDialog {
 		emailTV.setTextColor(Color.WHITE);
 		emailET = new EditText(context);
 		emailET.setSingleLine(true);
-		emailET.setInputType(InputType.TYPE_CLASS_TEXT 
+		emailET.setInputType(InputType.TYPE_CLASS_TEXT
 				| InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS );
 
 		LinearLayout llBottom = new LinearLayout(context);
