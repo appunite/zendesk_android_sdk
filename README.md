@@ -1,4 +1,4 @@
- ## How to integrate Zendesk into your Android Application
+## How to integrate Zendesk into your Android Application
 
 - put the zendesk.jar into a "lib" folder underneath the root directory of your Android project
 
